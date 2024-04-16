@@ -1,40 +1,20 @@
 <script>
-  let menu = [
-    {
-      name: "Products",
-      link: "/products",
-      open: false,
-      children: [
-        {
-          name: "New Arrivals",
-          link: "/products/new-arrivals",
-        },
-        {
-          name: "On Sale",
-          link: "/products/on-sale",
-        },
-      ],
-    },
-    {
-      name: "About",
-      link: "/about",
-    },
-    {
-      name: "Contact",
-      link: "/search",
-    },
-  ];
+  import RadixIconsChevronDown from "./icons/RadixIconsChevronDown.svelte";
+  import { menu } from "./menu.js";
 </script>
 
-<div class="nav">
+<nav>
   <ul class="items">
-    {#each menu as item}
+    {#each $menu as item}
       <li>
         {#if item.children}
           <button
             on:click={() => (item.open = !item.open)}
-            aria-expanded={item.open}>{item.name}</button
+            aria-expanded={item.open}
           >
+            {item.name}
+            <RadixIconsChevronDown />
+          </button>
           <ul class="children">
             {#each item.children as child}
               <li>
@@ -48,7 +28,7 @@
       </li>
     {/each}
   </ul>
-</div>
+</nav>
 
 <style>
   .items {
@@ -87,5 +67,15 @@
     padding: 1rem;
     gap: 1rem;
     flex-direction: row;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+
+    &[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
   }
 </style>

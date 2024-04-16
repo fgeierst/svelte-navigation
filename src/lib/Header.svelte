@@ -1,21 +1,23 @@
 <script>
-  import MenuMobile from "./MenuMobile.svelte";
-  import Nav from "./Nav.svelte";
+  import RadixIconsHome from "./icons/RadixIconsHome.svelte";
+  import NavDesktop from "./NavDesktop.svelte";
+  import NavMobile from "./NavMobile.svelte";
   import Search from "./Search.svelte";
-
-  let open = false;
 </script>
 
 <header>
-  <a href="/">Svelte Navigation</a>
-  <div class="desktop-only"><Nav /></div>
-  <Search />
-  <div class="mobile-only">
-    <button on:click={() => (open = !open)} aria-expanded={open}>Menu</button>
-    <div class="mobile-nav">
-      <MenuMobile />
-    </div>
+  <a class="logo" href="/">
+    <RadixIconsHome aria-hidden="true" />
+    Svelte Navigation
+  </a>
+
+  <div class="desktop-only"><NavDesktop /></div>
+
+  <div class="push-right">
+    <Search />
   </div>
+
+  <div class="mobile-only"><NavMobile /></div>
 </header>
 
 <style>
@@ -31,6 +33,16 @@
     height: var(--header-height);
   }
 
+  header :global(a) {
+    text-decoration: none;
+  }
+
+  .logo {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
   .desktop-only {
     display: none;
 
@@ -41,28 +53,16 @@
 
   .mobile-only {
     display: contents;
+
     @media (width > 768px) {
       display: none;
     }
   }
 
-  .mobile-nav {
-    display: none;
-  }
-
-  [aria-expanded="true"] + .mobile-nav {
-    display: block;
-    position: fixed;
-    top: var(--header-height, 3rem);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #fff;
-    z-index: 1;
-    padding: 1rem;
-  }
-
-  header :global(a) {
-    text-decoration: none;
+  .push-right {
+    margin-inline-start: auto;
+    @media (width > 768px) {
+      margin-inline-start: 0;
+    }
   }
 </style>
