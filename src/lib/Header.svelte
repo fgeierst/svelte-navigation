@@ -8,15 +8,12 @@
 
 <header>
   <a href="/">Svelte Navigation</a>
-  <div class="desktop-only">
-    <Nav />
-    <Search />
-  </div>
+  <div class="desktop-only"><Nav /></div>
+  <Search />
   <div class="mobile-only">
     <button on:click={() => (open = !open)} aria-expanded={open}>Menu</button>
     <div class="mobile-nav">
       <MenuMobile />
-      <Search />
     </div>
   </div>
 </header>
@@ -43,7 +40,7 @@
   }
 
   .mobile-only {
-    display: block;
+    display: contents;
     @media (width > 768px) {
       display: none;
     }
