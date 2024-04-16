@@ -73,15 +73,19 @@
   }
 
   [aria-expanded="true"] + .children {
-    display: block;
+    display: flex;
     position: fixed;
     list-style: none;
     padding-inline-start: 0;
-    top: 3rem;
+    top: var(--header-height, 3rem);
     left: auto;
     right: auto;
     background: #fff;
     z-index: 1;
-    border: 1px solid #ccc;
+    border: solid #ccc;
+    border-width: 0 1px 1px;
+    padding: 1rem;
+    gap: 1rem;
+    flex-direction: row;
   }
 </style>

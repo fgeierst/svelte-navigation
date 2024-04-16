@@ -23,11 +23,15 @@
 
 <style>
   header {
+    --header-height: 4rem;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-block-end: 1px solid #ccc;
+    padding-inline: 1rem;
     gap: 1rem;
+    height: var(--header-height);
   }
 
   .desktop-only {
@@ -52,12 +56,13 @@
   [aria-expanded="true"] + .mobile-nav {
     display: block;
     position: fixed;
-    top: 3rem;
+    top: var(--header-height, 3rem);
     left: 0;
     right: 0;
     bottom: 0;
     background: #fff;
     z-index: 1;
+    padding: 1rem;
   }
 
   header :global(a) {

@@ -19,4 +19,9 @@
 </main>
 
 <style>
+  main {
+    padding-inline: 1rem;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
 </style>
